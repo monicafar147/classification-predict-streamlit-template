@@ -80,3 +80,8 @@ if __name__ == '__main__':
     y_unseen = unpickled_model.predict(X_unseen)
     print('y_unseen')
     print(y_unseen)
+
+    submit_dict = {'tweetid': test['tweetid'], 'tweet':X_unseen,'sentiment':y_unseen}
+    submit_df = pd.DataFrame(data=submit_dict)
+    submit_df.set_index('tweetid')
+    submit_df.to_csv("kaggle.csv",index  = False)
