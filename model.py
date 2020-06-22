@@ -72,7 +72,7 @@ if __name__ == '__main__':
         unpickled_model = pickle.load(file)
 
     # load test data in
-    test = pd.read_csv('https://raw.githubusercontent.com/monicafar147/classification-predict-streamlit-template/master/climate-change-belief-analysis/train.csv')
+    test = pd.read_csv('https://raw.githubusercontent.com/monicafar147/classification-predict-streamlit-template/master/climate-change-belief-analysis/test.csv')
     test['processed'] = test['message'].apply(_preprocess)
     X_unseen = test['processed']
 
