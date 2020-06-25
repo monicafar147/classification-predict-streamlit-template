@@ -83,6 +83,10 @@ def main():
 		    prediction = predictor.predict(tweets)		    
 		    st.success("Text Categorized as: {}".format(prediction))
 
+		if st.button("Button"):
+			st.success("We can add text here")
+
+
 	# add EDA
 	# add real world research
 	# add choose a model button
