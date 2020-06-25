@@ -85,6 +85,8 @@ def main():
 
 		if st.button("Button"):
 			st.success("We can add text here")
+		if st.button("Random new button"):
+			st.success("Yeah! it worked!")
 
 
 	# add EDA
