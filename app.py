@@ -100,7 +100,7 @@ def main():
 			print("processed tweet : \n {}".format(tweet_processed))
 			tweet_pred = unpickled_model.predict([tweet_processed])
 			print("predicted",tweet_pred)
-			st.success("LR Model")
+			st.success("Linear Regression")
 
 # Required to let Streamlit instantiate our web app.  
 if __name__ == '__main__':
