@@ -93,6 +93,14 @@ def main():
 			st.success("Text Categorized as: {}".format(tweet_pred))
 
 	# add choose a model button
+		if st.button("Classify LR model"):
+			tweet = tweet_text
+			print("input tweet : \n {}".format(tweet))
+			tweet_processed = preprocess(tweet)
+			print("processed tweet : \n {}".format(tweet_processed))
+			tweet_pred = unpickled_model.predict([tweet_processed])
+			print("predicted",tweet_pred)
+			st.success("LR Model")
 
 # Required to let Streamlit instantiate our web app.  
 if __name__ == '__main__':
