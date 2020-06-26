@@ -87,7 +87,8 @@ def main():
 				""")
 
 		# Creating a text box for user input
-		tweet_text = st.text_area("Enter Text","Type Here")
+		st.markdown("### Enter Text Bellow")
+		tweet_text = st.text_area("","Type Here")
 
 		if st.button("Classify Linear SVC model"):
 			tweet = tweet_text
