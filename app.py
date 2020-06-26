@@ -58,7 +58,7 @@ def main():
 	# Creates a main title and subheader on your page -
 	# these are static across all pages
 	st.title("Tweet Classifer")
-	st.subheader("Climate change tweet classification")
+	st.subheader("Classifing tweets towards there belief in Climate Change")
 
 	# Creating sidebar with selection box -
 	# you can create multiple pages this way
@@ -79,7 +79,13 @@ def main():
 
 	# Building out the predication page
 	if selection == "Home":
-		st.info("Prediction with ML Models")
+		st.markdown("**This app will take input as text and return a classification into one of the four categories:**")
+		st.info("""\n-1: Anti Climate Change
+				\n0: Neutral towards Climate Change
+				\n1: Pro Climate Change
+				\n2: Factual News about Climate Change
+				""")
+
 		# Creating a text box for user input
 		tweet_text = st.text_area("Enter Text","Type Here")
 
