@@ -58,7 +58,7 @@ def main():
 	# Creates a main title and subheader on your page -
 	# these are static across all pages
 	st.title("Tweet Classifer")
-	st.subheader("Classifing tweets towards there belief in Climate Change")
+	st.subheader("Classifing tweets towards their belief in Climate Change")
 
 	# Creating sidebar with selection box -
 	# you can create multiple pages this way
