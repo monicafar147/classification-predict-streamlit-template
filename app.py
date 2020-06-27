@@ -143,7 +143,7 @@ def main():
 		st.info('Model 2 info here')
 
 		st.markdown('## Model 3')
-		st.info("## Model 3 info here")
+		st.info(" Model 3 info here")
 
 # Required to let Streamlit instantiate our web app.  
 if __name__ == '__main__':
