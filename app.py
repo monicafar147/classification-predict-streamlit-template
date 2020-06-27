@@ -67,7 +67,27 @@ def main():
 
 	# Building out the "Information" page
 	if selection == "About":
-		st.info("General Information")
+		# Title
+		st.title('About')
+		st.write('-----------------------------------------------')
+		# st.info("General Information")
+
+		# Intro
+		st.markdown('## Introduction')
+		st.info('Intro Here')
+
+		# Research
+		st.markdown('## Research')
+		st.info('Research Here')
+
+		# EDA
+		st.markdown('## Exploratory Data Analysis')
+		st.info('EDA Here')
+
+		# Insights
+		st.markdown('## Insights')
+		st.info('Insights Here')
+		
 		# You can read a markdown file from supporting resources folder
 		st.markdown("Some information here")
 	    # add EDA
