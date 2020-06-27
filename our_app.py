@@ -52,7 +52,7 @@ def main():
 
 	# Creating sidebar with selection box -
 	# you can create multiple pages this way
-	options = ["Prediction", "Information"]
+	options = ["Prediction", "Information", "Modelling"]
 	selection = st.sidebar.selectbox("Choose Option", options)
 
 	# Building out the "Information" page
@@ -92,6 +92,16 @@ def main():
 	# add EDA
 	# add real world research
 	# add choose a model button
+	
+	if selection == "Modelling":
+		st.info("Model 1")
+		st.subheader("Models")
+		pic1 = {"Logistic regression": "https://drive.google.com/file/d/1wgWgT9wribP8Oa2Vxs_hkTROzGAIrbQF/view?usp=sharing"
+		, "Linear SVC": "https://drive.google.com/file/d/144fovoeaSTs9Q-4hT_44j_qv3XzvsF6m/view?usp=sharing"}
+		pic = st.selectbox("model choices",list(pic1.keys()), 0)
+		st.image(pic1[pic], use_column_width=True,caption=pic1[pic])
+		
+
 
 # Required to let Streamlit instantiate our web app.  
 if __name__ == '__main__':
