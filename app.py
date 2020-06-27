@@ -58,7 +58,7 @@ def main():
 	# Creates a main title and subheader on your page -
 	# these are static across all pages
 	st.title("Tweet Classifer")
-	st.subheader("Climate change tweet classification")
+	st.subheader("Classifing tweets towards their belief in Climate Change")
 
 	# Creating sidebar with selection box -
 	# you can create multiple pages this way
@@ -67,7 +67,27 @@ def main():
 
 	# Building out the "Information" page
 	if selection == "About":
-		st.info("General Information")
+		# Title
+		st.title('About')
+		st.write('-----------------------------------------------')
+		# st.info("General Information")
+
+		# Intro
+		st.markdown('## Introduction')
+		st.info('Intro Here')
+
+		# Research
+		st.markdown('## Research')
+		st.info('Research Here')
+
+		# EDA
+		st.markdown('## Exploratory Data Analysis')
+		st.info('EDA Here')
+
+		# Insights
+		st.markdown('## Insights')
+		st.info('Insights Here')
+		
 		# You can read a markdown file from supporting resources folder
 		st.markdown("Some information here")
 	    # add EDA
@@ -79,9 +99,16 @@ def main():
 
 	# Building out the predication page
 	if selection == "Home":
-		st.info("Prediction with ML Models")
+		st.markdown("**This app will take input as text and return a classification into one of the four categories:**")
+		st.info("""\n-1: Anti Climate Change
+				\n0: Neutral towards Climate Change
+				\n1: Pro Climate Change
+				\n2: Factual News about Climate Change
+				""")
+
 		# Creating a text box for user input
-		tweet_text = st.text_area("Enter Text","Type Here")
+		st.markdown("### Enter Text Bellow")
+		tweet_text = st.text_area("","Type Here")
 
 		if st.button("Classify Linear SVC model"):
 			tweet = tweet_text
