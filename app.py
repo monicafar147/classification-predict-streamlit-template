@@ -131,17 +131,22 @@ def main():
 			st.success("LR Model")
 
 	if selection == "Modelling":
+		# title
 		st.title('Modelling process')
 
+		# preprocessing
 		st.markdown("## Preprocessing the Data")
 		st.info('preprocessing here')
 
+		# Model 1
 		st.markdown("## Model 1")
 		st.info('Model 1 info here')
 
+		# Model 2
 		st.markdown('## Model 2')
 		st.info('Model 2 info here')
 
+		# Model 3
 		st.markdown('## Model 3')
 		st.info(" Model 3 info here")
 
