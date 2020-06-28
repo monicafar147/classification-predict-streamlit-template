@@ -232,10 +232,11 @@ def main():
 		st.image(image2, caption="Linear SVC")
 		st.subheader("Grid search on SVC")
 		image3 = Image.open("resources/imgs/grid.PNG")
-		st.image(image3, caption="Grid search")
 		st.text("Grid-search is the process of scanning the data to configure")
-		st.text("optimal parameters for a model")
-		st.text("In our model, we searched for the best parameters to get the highest score")
+		st.text("optimal parameters for a model.")
+		st.text("In our model, we searched for the best parameters to get the highest score.")
+		st.image(image3, caption="Grid search")
+		st.subheader("Insights on how models perform on unseen data")
 
 		
 		
