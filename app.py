@@ -105,8 +105,13 @@ def main():
 		from PIL import Image
 		image1 = Image.open('resources/imgs/logistic.PNG')
 		image2 = Image.open('resources/imgs/linear svc.PNG')
-		st.text("Logistic regression is a supervised learning classification algorithm used to predict the probability of a target variable. This model works best on binary data classification but almost performs well in our data even though it badly predicts some classes such as the recall of 0 and -1. The overall accuracy is decent and it also does quite well on unseen data.")
-		st.text("Linear Support Vector Machine is machine learning algorithm for solving multiclass classification problems. It gives a better score than Logistics regression")
+		st.text("Logistic regression is a supervised learning classification algorithm") 
+		st.text("used to predict the probability of a target variable.") 
+		st.text("This model works best on binary data classification but almost performs well in our data") 
+		st.text("even though it badly predicts some classes such as the recall of 0 and -1.")
+		st.text("The overall accuracy is decent and it also does quite well on unseen data.")
+		st.text("Linear Support Vector Machine is machine learning algorithm for solving multiclass classification problems."
+		st.ext("It gives a better score than Logistics regression")
 		st.image(image1, caption="Logistic Regression")
 		st.image(image2, caption="Linear SVC")
 		
