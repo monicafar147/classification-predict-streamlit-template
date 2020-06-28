@@ -46,7 +46,11 @@ if __name__ == '__main__':
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size= 0.2, random_state =10)
 
     # apply model on train data
+<<<<<<< HEAD
     #creating a pipeline with the tfid vectorizer and a linear svc model
+=======
+    # creating a pipeline with the tfid vectorizer and a linear svc model
+>>>>>>> streamlit-features
     svc = Pipeline([('tfidf',TfidfVectorizer()),('classify',LinearSVC())])
 
     #fitting the model
@@ -70,6 +74,7 @@ if __name__ == '__main__':
     with open(model_load_path,'rb') as file:
         unpickled_model = pickle.load(file)
 
+<<<<<<< HEAD
     # load test data in
     test = pd.read_csv('https://raw.githubusercontent.com/monicafar147/classification-predict-streamlit-template/master/climate-change-belief-analysis/test.csv')
     test['processed'] = test['message'].apply(preprocess)
@@ -80,9 +85,15 @@ if __name__ == '__main__':
     print('y_unseen')
     print(y_unseen)
 
+=======
+>>>>>>> streamlit-features
     tweet = "china is to blame for climate change! #die #flood"
     new = preprocess(tweet)
     print(new)
     tweet_pred = unpickled_model.predict([new])
+<<<<<<< HEAD
     print("predicted",tweet_pred)
 
+=======
+    print("predicted",tweet_pred)
+>>>>>>> streamlit-features
