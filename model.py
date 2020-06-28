@@ -1,7 +1,7 @@
 # general
 import numpy as np 
 import pandas as pd
-import pickle
+import dill as pickle
 import joblib,os
 
 # text preprocessing
@@ -10,25 +10,36 @@ from string import punctuation
 import nltk
 nltk.download(['stopwords','punkt'])
 from nltk.corpus import stopwords
-from nltk.tokenize import word_tokenize
+from nltk.tokenize import TweetTokenizer
 
 # models
 from sklearn.model_selection import train_test_split
 from sklearn.pipeline import Pipeline
-from sklearn.feature_extraction.text import TfidfVectorizer,CountVectorizer
+from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.svm import LinearSVC
+from sklearn.linear_model import LogisticRegression
+from sklearn.svm import SVC
+from sklearn.pipeline import Pipeline
 
 # metrics
 from sklearn.metrics import classification_report
 
 def preprocess(tweet):
-  tweet = tweet.lower() # converting everything to lower case
-  tweet = re.sub(r"\W", " ", tweet)
-  tweet = re.sub(r'#([^\s]+)', r'\1', tweet) 
-  tweet = word_tokenize(tweet) # tokenizing the tweets so that they may be used in modeling and/or NLP
-  stopwords_list = set(stopwords.words('english') + list(punctuation)) # cresting a list containing punctuation and stop words
-  tweets = [word for word in tweet if word not in stopwords_list] # iterating over the list and saving the output into a list 
-  return " ".join(tweet)
+  tweet = tweet.lower()
+  random_characters = ['â','¢','‚','¬','Â','¦','’',"It's",'Ã','..','Å']
+  tokenizer = TweetTokenizer(preserve_case=True, reduce_len=True)
+  tweet = tokenizer.tokenize(tweet)
+  stopwords_list = set(random_characters+list(punctuation))
+  tweet = [word for word in tweet if word not in stopwords_list]
+  tweet = re.sub(r'#([^\s]+)', r'\1', " ".join(tweet))
+  tweet = re.sub(r'@([^\s]+)', r'\1', "".join(tweet))  
+  return tweet
+
+# pickle preprocessing function
+model_save_path = "resources/process.pkl"
+with open(model_save_path,'wb') as file:
+    pickle.dump(preprocess,file)
+
 
 if __name__ == '__main__':
 
@@ -43,10 +54,9 @@ if __name__ == '__main__':
     # train test split
     X = train['processed']
     y = train['sentiment']
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size= 0.2, random_state =10)
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size= 0.05, random_state =10)
 
-    # apply model on train data
-    # creating a pipeline with the tfid vectorizer and a linear svc model
+    #creating a pipeline with the tfid vectorizer and a linear svc model
     svc = Pipeline([('tfidf',TfidfVectorizer()),('classify',LinearSVC())])
 
     #fitting the model
@@ -55,23 +65,54 @@ if __name__ == '__main__':
     #apply model on test data
     y_pred_svc = svc.predict(X_test)
 
-    # Print a classification report
-    print('report on y_test vs svc.predict(X_test)')
-    print(classification_report(y_test, y_pred_svc))
-
-    # pickle model
+    #pickle model
     model_save_path = "resources/linear_SVC.pkl"
     with open(model_save_path,'wb') as file:
         pickle.dump(svc,file)
 
-    print('loading pickle file')
-    model_load_path = "resources/linear_SVC.pkl"
+    #creating a pipeline with a tfidf vectorizer and a logistic regression model
+    LR_model = Pipeline([('tfidf',TfidfVectorizer()),('classify',(LogisticRegression(C=1.0,solver='lbfgs',random_state=42,max_iter=200)))])
+
+    #fitting the model
+    LR_model.fit(X_train, y_train)
+
+    #Apply model on test data
+    y_pred_lr = LR_model.predict(X_test)
+
+    #pickle model
+    model_save_path = "resources/LR.pkl"
+    with open(model_save_path,'wb') as file:
+        pickle.dump(svc,file)
+
+    #{'svm__C': 1, 'svm__gamma': 0.01}
+    #creating a pipeline with the tfid vectorizer and a linear svc model
+    objs = [("tfidf", TfidfVectorizer()),
+        ("svm", SVC(kernel="linear", C=1,gamma=0.01))]
+    pipe = Pipeline(objs)
+    pipe.fit(X_train, y_train)
+
+    #pickle model
+    model_save_path = "resources/SVC.pkl"
+    with open(model_save_path,'wb') as file:
+        pickle.dump(svc,file)
+
+    #apply model on test data
+    y_pred_grid = pipe.predict(X_test)
+
+    print('loading LR')
+    model_load_path = "resources/LR.pkl"
     
     with open(model_load_path,'rb') as file:
-        unpickled_model = pickle.load(file)
+        unpickled_LR = pickle.load(file)
 
     tweet = "china is to blame for climate change! #die #flood"
     new = preprocess(tweet)
     print(new)
-    tweet_pred = unpickled_model.predict([new])
+    tweet_pred = unpickled_LR.predict([new])
     print("predicted",tweet_pred)
+
+    print("testing pickling function")
+    model_load_path = "resources/process.pkl"
+    with open(model_load_path,'rb') as file:
+        cleaner = pickle.load(file)
+    print(cleaner("this is text @user"))    
