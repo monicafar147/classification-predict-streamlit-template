@@ -228,6 +228,7 @@ def main():
 		st.text("Linear Support Vector Machine is machine learning algorithm for")
 		st.text("solving multiclass classification problems.")
 		st.text("It gives a better score than Logistics regression")
+		st.text("                                             ")
 		image2 = Image.open('resources/imgs/linear svc.PNG')
 		st.image(image2, caption="Linear SVC")
 		st.subheader("Grid search on SVC")
@@ -235,6 +236,7 @@ def main():
 		st.text("Grid-search is the process of scanning the data to configure")
 		st.text("optimal parameters for a model.")
 		st.text("In our model, we searched for the best parameters to get the highest score.")
+		st.text("     						")
 		st.image(image3, caption="Grid search")
 		st.subheader("Insights on how models perform on unseen data")
 
