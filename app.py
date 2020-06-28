@@ -42,7 +42,7 @@ from PIL import Image
 # Streamlit dependencies
 import streamlit as st
 import joblib,os
->>>>>>> streamlit-features
+
 
 # general
 import numpy as np 
