@@ -230,6 +230,11 @@ def main():
 		st.text("It gives a better score than Logistics regression")
 		image2 = Image.open('resources/imgs/linear svc.PNG')
 		st.image(image2, caption="Linear SVC")
+		st.subheader("Grid search on SVC")
+		image3 = Image.open("resources/imgs/grid.PNG")
+		st.image(image3, caption="Grid search")
+		st.text("Grid-search is the process of scanning the data to configure optimal parameters for a model")
+		st.text("In our model, we searched for the best parameters to get the highest score")
 
 		
 		
