@@ -77,6 +77,9 @@ def main():
 			# You can use a dictionary or similar structure to make this output
 			# more human interpretable.
 			st.success("Text Categorized as: {}".format(prediction))
+	# add EDA
+	# add real world research
+	# add choose a model button
 
 # Required to let Streamlit instantiate our web app.  
 if __name__ == '__main__':
