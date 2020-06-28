@@ -214,7 +214,7 @@ def main():
 			st.write("show raw data") # will write the df to the page
 
 	if selection == "Modelling":
-		from PIL import image
+		from PIL import Image
 		st.subheader("Data used in our models")
 		st.text("The data we used in our models was unbalanced")
 		st.text("This posed a challenge to find a accurate model")
