@@ -24,6 +24,7 @@
 # Streamlit dependencies
 import streamlit as st
 import joblib,os
+from PIL import Image
 
 # general
 import numpy as np 
@@ -57,37 +58,29 @@ def preprocess(tweet):
   tweets = [word for word in tweet if word not in stopwords_list] # iterating over the list and saving the output into a list 
   return " ".join(tweet)
 
-# The main function where we will build the actual app
 def main():
 	"""Tweet Classifier App with Streamlit """
 
 	# Creates a main title and subheader on your page -
 	# these are static across all pages
 	st.title("Tweet Classifer")
-	st.subheader("Climate change tweet classification")
+	st.subheader("Classifing tweets towards their belief in Climate Change")
 
 	# Creating sidebar with selection box -
 	# you can create multiple pages this way
 	options = ["Home", "About","Modelling"]
 	selection = st.sidebar.selectbox("Choose Option", options)
 
-	# Building out the "Information" page
-	if selection == "About":
-		st.info("General Information")
-		# You can read a markdown file from supporting resources folder
-		st.markdown("Some information here")
-
-		st.subheader("Raw Twitter data and label")
-		if st.checkbox('Show raw data'): # data is hidden if box is unchecked
-			st.write(raw[['sentiment', 'message']]) # will write the df to the page
-
 	# Building out the predication page
 	if selection == "Home":
-		st.info("Prediction with ML Models")
-		# Creating a text box for user input
-		tweet_text = st.text_area("Enter Text","Type Here")
+		st.markdown("**This app will take input as text and return a classification into one of the four categories:**")
+		st.write("(see the About page for more information)")
 
-		if st.button("Classify"):
+		# Creating a text box for user input
+		st.markdown("### Enter Text Bellow")
+		tweet_text = st.text_area("","Type Here")
+
+		if st.button("Classify Linear SVC model"):
 			tweet = tweet_text
 			print("input tweet : \n {}".format(tweet))
 			tweet_processed = preprocess(tweet)
@@ -95,26 +88,84 @@ def main():
 			tweet_pred = unpickled_model.predict([tweet_processed])
 			print("predicted",tweet_pred)
 			st.success("Text Categorized as: {}".format(tweet_pred))
-	# add EDA
-	# add real world research
-	# add choose a model button
-	if selection == "Modelling":
-		st.info("Top 3 models")
-		st.subheader("Models")
 
-		from PIL import Image
-		image1 = Image.open('resources/imgs/logistic.PNG')
-		image2 = Image.open('resources/imgs/linear svc.PNG')
+	# add choose a model button
+		if st.button("Classify LR model"):
+			tweet = tweet_text
+			print("input tweet : \n {}".format(tweet))
+			tweet_processed = preprocess(tweet)
+			print("processed tweet : \n {}".format(tweet_processed))
+			tweet_pred = unpickled_model.predict([tweet_processed])
+			print("predicted",tweet_pred)
+			st.success("LR Model")
+
+	# Building out the "Information" page
+	if selection == "About":
+		# Title
+		st.title('About')
+		st.write('-----------------------------------------------')
+		# st.info("General Information")
+
+		# Intro
+		st.markdown('## Introduction')
+		st.info("""Climate change has been a trending topic ever since
+				 Al Gore received a Nobel Peace Prize for his campaign in 2007.
+				The topic has become a controversial subject on twitter where some 
+				twitter users feel very strongly that climate change is not real 
+				and is part of a conspiracy theory. To add fire to the situation, 
+				American President, Donald Trump, claimed that climate change is a 
+				Chinese-funded conspiracy. As a result, some twitter users
+				started tweeting that Climate Change is not real and trying to
+				follow tweets about climate change suddenly required a degree in politics.""")
+		st.subheader("The Climate Change Tweet Classifier aims to classify the sentiment of a tweet.")
+
+		# Research
+		st.markdown('## Research')
+		st.info('Research Here')
+
+		# EDA
+		st.markdown('## Exploratory Data Analysis')
+		st.subheader('Most tweeted hashtag')
+		st.info("""\n anti : #MAGA (11) 
+				\n neutral : #climate (16)
+				\n pro : #climate : (130)
+				\n news : #climate : (130)
+				""")
+		st.subheader('Most tweeted username')
+		st.info("""\n anti : @realDonaldTrump (71)
+				\n neutral : @StephenSchlegel (307)
+				\n pro : @realDonaldTrump (31)
+				\n news : @thehill (77)
+				""")
+
+		# Insights
+		st.markdown('## Insights')
+		st.info('Insights Here')
+		
+		# You can read a markdown file from supporting resources folder
+		st.markdown("Some information here")
+	    # add EDA
+	    # add real world research
+
+		st.subheader("Raw Twitter data and label")
+		if st.checkbox('Show raw data'): # data is hidden if box is unchecked
+			st.write("show raw data") # will write the df to the page
+
+	if selection == "Modelling":
+		st.subheader("Logistic Regression Model")
 		st.text("Logistic regression is a supervised learning classification algorithm") 
 		st.text("used to predict the probability of a target variable.") 
 		st.text("This model works best on binary data classification but almost performs well in our data") 
 		st.text("even though it badly predicts some classes such as the recall of 0 and -1.")
 		st.text("The overall accuracy is decent and it also does quite well on unseen data.")
+		image1 = Image.open('resources/imgs/logistic.PNG')
+		st.image(image1, caption="Logistic Regression")
 		st.text("                                                                        ")
+		st.subheader("Logistic Regression Model")
 		st.text("Linear Support Vector Machine is machine learning algorithm for")
 		st.text("solving multiclass classification problems.")
 		st.text("It gives a better score than Logistics regression")
-		st.image(image1, caption="Logistic Regression")
+		image2 = Image.open('resources/imgs/linear svc.PNG')
 		st.image(image2, caption="Linear SVC")
 		
 
