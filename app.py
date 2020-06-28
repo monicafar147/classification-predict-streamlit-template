@@ -199,6 +199,7 @@ def main():
 		st.text("This model works best on binary data classification but almost performs well in our data") 
 		st.text("even though it badly predicts some classes such as the recall of 0 and -1.")
 		st.text("The overall accuracy is decent and it also does quite well on unseen data.")
+		from PIL import Image
 		image1 = Image.open('resources/imgs/logistic.PNG')
 		st.image(image1, caption="Logistic Regression")
 		st.text("                                                                        ")
