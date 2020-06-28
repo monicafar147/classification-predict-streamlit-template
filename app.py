@@ -82,8 +82,13 @@ def main():
 
 		# EDA
 		st.markdown('## Exploratory Data Analysis')
-		st.info('Most tweeted hashtag')
-		st.info('Most tweeted username')
+		st.write('Most tweeted hashtag')
+		st.info("""\n anti : 
+				\n neutral : 
+				\n pro : 
+				\n news : 
+				""")
+		st.write('Most tweeted username')
 
 		# Insights
 		st.markdown('## Insights')
