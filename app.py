@@ -84,10 +84,47 @@ def main():
 		st.markdown('## Exploratory Data Analysis')
 
 			# Adding word clouds
+		st.markdown('### Word Clouds')
 		st.info("These are the Word Clouds we created on the training set, the bigger the word the more common it occurs within the data")
 		from PIL import Image
-		pro = Image.open('resources/imgs/wordcloud_anti.PNG')
-		st.image(pro)
+		anti = Image.open('resources/imgs/wordcloud_anti.PNG')
+		st.image(anti, width = 650)
+
+		pro = Image.open('resources/imgs/wordcloud_pro.PNG')
+		st.image(pro, width = 650)
+
+		neutral = Image.open('resources/imgs/wordcloud_neutral.PNG')
+		st.image(neutral, width = 650)
+
+		facts = Image.open('resources/imgs/wordcloud_fact.PNG')
+		st.image(facts, width = 650)
+
+		st.markdown('** Interesting insights into the word clouds **')
+		st.markdown("""For Anti-climate change tweets:\n
+	* The word science pops up often
+	* Steves Goddard is referenced often
+	* Politicians referenced include Al Gore, Obama and Donald Trump""")
+		st.markdown("""For Pro-climate change tweets:\n
+	* Steven Schlegel is referenced often.
+	* The word Sjofona pops up often.
+	* The word husband pops up for some reason.
+	* Politicians referenced include Sen Sanders and Donald Trump""")
+		st.markdown("""For Neutral tweets:\n
+	* the word journalist pops up.
+	* Places referrenced are America and Paris.
+	* Chelsea Clinton is referrenced.
+	* Politicians referenced include Sen Sanders and Donald Trump
+	* Celebrities referenced incluse Leonardo Dicaprio
+	* Strong emotional words include please, action, fuck and responsible""")
+		st.markdown("""For Factual tweets:\n
+	* The word EPA pops up.
+	* News outlets referenced include CNN, Guardian, Time.
+	* Scott Prutt is mentioned
+	* The word independent study pops up.
+	* Che white house and Trump is mentioned.
+	* Countries that pop up include US and China""")
+	
+
 		# Insights
 		st.markdown('## Insights')
 		st.info('Insights Here')
