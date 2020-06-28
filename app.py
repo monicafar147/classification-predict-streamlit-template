@@ -93,6 +93,8 @@ def main():
 	    # add EDA
 	    # add real world research
 
+		st.map(tweet)
+
 		st.subheader("Raw Twitter data and label")
 		if st.checkbox('Show raw data'): # data is hidden if box is unchecked
 			st.write("show raw data") # will write the df to the page
