@@ -227,7 +227,7 @@ def main():
 		image2 = Image.open('resources/imgs/linear svc.PNG')
 		st.image(image2, caption="Linear SVC")
 		
-=======
+
 	if selection == "Modelling":
 		# title
 		st.title('Modelling process')
