@@ -89,6 +89,11 @@ def main():
 				\n news : 
 				""")
 		st.write('Most tweeted username')
+		st.info("""\n anti : 
+				\n neutral : 
+				\n pro : 
+				\n news : 
+				""")
 
 		# Insights
 		st.markdown('## Insights')
