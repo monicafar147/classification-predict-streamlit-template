@@ -106,6 +106,10 @@ def main():
 		pic = st.selectbox("model choices",list(pic1.keys()), 0)
 		st.image(pic1[pic], use_column_width=True,caption=pic1[pic])
 
+		from PIL import Image
+		image = Image.open('resources/imgs/logistic.PNG')
+		st.image(image)
+
 # Required to let Streamlit instantiate our web app.  
 if __name__ == '__main__':
     print('loading pickle file')
