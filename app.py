@@ -193,7 +193,7 @@ def main():
 			st.write("show raw data") # will write the df to the page
 
 	if selection == "Modelling":
-		st.subheader("Logistic Regression Model")
+		st.subheader("Linear SVC Model")
 		st.text("Logistic regression is a supervised learning classification algorithm") 
 		st.text("used to predict the probability of a target variable.") 
 		st.text("This model works best on binary data classification but almost performs well in our data") 
