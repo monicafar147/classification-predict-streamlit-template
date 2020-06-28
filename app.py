@@ -1,23 +1,16 @@
 """
-<<<<<<< HEAD
 
     Simple Streamlit webserver application for serving developed classification
 	models.
 
     Author: Explore Data Science Academy.
 
-=======
-    Simple Streamlit webserver application for serving developed classification
-	models.
-    Author: Explore Data Science Academy.
->>>>>>> streamlit-features
     Note:
     ---------------------------------------------------------------------
     Plase follow the instructions provided within the README.md file
     located within this directory for guidance on how to use this script
     correctly.
     ---------------------------------------------------------------------
-<<<<<<< HEAD
 
     Description: This file is used to launch a minimal streamlit web
 	application. You are expected to extend the functionality of this script
@@ -32,18 +25,6 @@
 import streamlit as st
 import joblib,os
 from PIL import Image
-=======
-    Description: This file is used to launch a minimal streamlit web
-	application. You are expected to extend the functionality of this script
-	as part of your predict project.
-	For further help with the Streamlit framework, see:
-	https://docs.streamlit.io/en/latest/
-"""
-
-# Streamlit dependencies
-import streamlit as st
-import joblib,os
->>>>>>> streamlit-features
 
 # general
 import numpy as np 
@@ -77,10 +58,7 @@ def preprocess(tweet):
   tweets = [word for word in tweet if word not in stopwords_list] # iterating over the list and saving the output into a list 
   return " ".join(tweet)
 
-<<<<<<< HEAD
-=======
 # The main function where we will build the actual app
->>>>>>> streamlit-features
 def main():
 	"""Tweet Classifier App with Streamlit """
 
@@ -94,41 +72,6 @@ def main():
 	options = ["Home", "About","Modelling"]
 	selection = st.sidebar.selectbox("Choose Option", options)
 
-<<<<<<< HEAD
-=======
-	# Building out the "Information" page
-	if selection == "About":
-		# Title
-		st.title('About')
-		st.write('-----------------------------------------------')
-		# st.info("General Information")
-
-		# Intro
-		st.markdown('## Introduction')
-		st.info('Intro Here')
-
-		# Research
-		st.markdown('## Research')
-		st.info('Research Here')
-
-		# EDA
-		st.markdown('## Exploratory Data Analysis')
-		st.info('EDA Here')
-
-		# Insights
-		st.markdown('## Insights')
-		st.info('Insights Here')
-		
-		# You can read a markdown file from supporting resources folder
-		st.markdown("Some information here")
-	    # add EDA
-	    # add real world research
-
-		st.subheader("Raw Twitter data and label")
-		if st.checkbox('Show raw data'): # data is hidden if box is unchecked
-			st.write("show raw data") # will write the df to the page
-
->>>>>>> streamlit-features
 	# Building out the predication page
 	if selection == "Home":
 		st.markdown("**This app will take input as text and return a classification into one of the four categories:**")
@@ -157,7 +100,6 @@ def main():
 			print("predicted",tweet_pred)
 			st.success("LR Model")
 
-<<<<<<< HEAD
 	# Building out the "Information" page
 	if selection == "About":
 		# Title
@@ -227,34 +169,6 @@ def main():
 		image2 = Image.open('resources/imgs/linear svc.PNG')
 		st.image(image2, caption="Linear SVC")
 		
-=======
-	if selection == "Modelling":
-		# title
-		st.title('Modelling process')
-		st.write("""for the modeling process the outputs that we were 
-				trying to predict were based on the following keys for a sentiment column:""")
-		st.info("""\n-1: Anti Climate Change
-				\n0: Neutral towards Climate Change
-				\n1: Pro Climate Change
-				\n2: Factual News about Climate Change
-				""")
-
-		# preprocessing
-		st.markdown("## Preprocessing the Data")
-		st.info('preprocessing here')
-
-		# Model 1
-		st.markdown("## Model 1")
-		st.info('Model 1 info here')
-
-		# Model 2
-		st.markdown('## Model 2')
-		st.info('Model 2 info here')
-
-		# Model 3
-		st.markdown('## Model 3')
-		st.info(" Model 3 info here")
->>>>>>> streamlit-features
 
 # Required to let Streamlit instantiate our web app.  
 if __name__ == '__main__':
@@ -265,8 +179,4 @@ if __name__ == '__main__':
         unpickled_model = pickle.load(file)
 
     print("model successfully pickled")
-<<<<<<< HEAD
     main()
-=======
-    main()
->>>>>>> streamlit-features
