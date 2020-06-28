@@ -219,7 +219,7 @@ def main():
 		st.text("The data we used in our models was unbalanced")
 		st.text("This posed a challenge to find a accurate model")
 		i = Image.open("resources/imgs/image.PNG")
-		st.image(i, caption="Distribution of data")
+		st.image(i, caption="Distribution of data", use_column_width=True)
 		st.text("     ")
 		st.subheader("Logistic Regression Model")
 		st.text("Logistic regression is a supervised learning classification algorithm") 
