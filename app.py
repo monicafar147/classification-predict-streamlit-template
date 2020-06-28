@@ -1,12 +1,11 @@
 """
-<<<<<<< HEAD
+
 
     Simple Streamlit webserver application for serving developed classification
 	models.
 
     Author: Explore Data Science Academy.
 
-=======
     Simple Streamlit webserver application for serving developed classification
 	models.
     Author: Explore Data Science Academy.
@@ -32,13 +31,13 @@
 import streamlit as st
 import joblib,os
 from PIL import Image
-=======
+
     Description: This file is used to launch a minimal streamlit web
 	application. You are expected to extend the functionality of this script
 	as part of your predict project.
 	For further help with the Streamlit framework, see:
 	https://docs.streamlit.io/en/latest/
-"""
+
 
 # Streamlit dependencies
 import streamlit as st
@@ -77,10 +76,10 @@ def preprocess(tweet):
   tweets = [word for word in tweet if word not in stopwords_list] # iterating over the list and saving the output into a list 
   return " ".join(tweet)
 
-<<<<<<< HEAD
-=======
+
+
 # The main function where we will build the actual app
->>>>>>> streamlit-features
+
 def main():
 	"""Tweet Classifier App with Streamlit """
 
@@ -94,8 +93,8 @@ def main():
 	options = ["Home", "About","Modelling"]
 	selection = st.sidebar.selectbox("Choose Option", options)
 
-<<<<<<< HEAD
-=======
+
+
 	# Building out the "Information" page
 	if selection == "About":
 		# Title
@@ -128,7 +127,7 @@ def main():
 		if st.checkbox('Show raw data'): # data is hidden if box is unchecked
 			st.write("show raw data") # will write the df to the page
 
->>>>>>> streamlit-features
+
 	# Building out the predication page
 	if selection == "Home":
 		st.markdown("**This app will take input as text and return a classification into one of the four categories:**")
@@ -157,7 +156,7 @@ def main():
 			print("predicted",tweet_pred)
 			st.success("LR Model")
 
-<<<<<<< HEAD
+
 	# Building out the "Information" page
 	if selection == "About":
 		# Title
@@ -254,7 +253,7 @@ def main():
 		# Model 3
 		st.markdown('## Model 3')
 		st.info(" Model 3 info here")
->>>>>>> streamlit-features
+
 
 # Required to let Streamlit instantiate our web app.  
 if __name__ == '__main__':
@@ -265,8 +264,6 @@ if __name__ == '__main__':
         unpickled_model = pickle.load(file)
 
     print("model successfully pickled")
-<<<<<<< HEAD
+
     main()
-=======
-    main()
->>>>>>> streamlit-features
+
