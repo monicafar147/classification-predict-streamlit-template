@@ -193,7 +193,7 @@ def main():
 			st.write("show raw data") # will write the df to the page
 
 	if selection == "Modelling":
-		st.subheader("Linear SVC Model")
+		st.subheader("Logistic Regression Model")
 		st.text("Logistic regression is a supervised learning classification algorithm") 
 		st.text("used to predict the probability of a target variable.") 
 		st.text("This model works best on binary data classification but almost performs well in our data") 
@@ -203,7 +203,7 @@ def main():
 		image1 = Image.open('resources/imgs/logistic.PNG')
 		st.image(image1, caption="Logistic Regression")
 		st.text("                                                                        ")
-		st.subheader("Logistic Regression Model")
+		st.subheader("Linear SVC Model")
 		st.text("Linear Support Vector Machine is machine learning algorithm for")
 		st.text("solving multiclass classification problems.")
 		st.text("It gives a better score than Logistics regression")
