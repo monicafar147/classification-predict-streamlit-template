@@ -100,11 +100,7 @@ def main():
 	# Building out the predication page
 	if selection == "Home":
 		st.markdown("**This app will take input as text and return a classification into one of the four categories:**")
-		st.info("""\n-1: Anti Climate Change
-				\n0: Neutral towards Climate Change
-				\n1: Pro Climate Change
-				\n2: Factual News about Climate Change
-				""")
+		st.write("(see the About page for more information)")
 
 		# Creating a text box for user input
 		st.markdown("### Enter Text Bellow")
@@ -128,6 +124,33 @@ def main():
 			tweet_pred = unpickled_model.predict([tweet_processed])
 			print("predicted",tweet_pred)
 			st.success("Linear Regression")
+
+	if selection == "Modelling":
+		# title
+		st.title('Modelling process')
+		st.write("""for the modeling process the outputs that we were 
+				trying to predict were based on the following keys for a sentiment column:""")
+		st.info("""\n-1: Anti Climate Change
+				\n0: Neutral towards Climate Change
+				\n1: Pro Climate Change
+				\n2: Factual News about Climate Change
+				""")
+
+		# preprocessing
+		st.markdown("## Preprocessing the Data")
+		st.info('preprocessing here')
+
+		# Model 1
+		st.markdown("## Model 1")
+		st.info('Model 1 info here')
+
+		# Model 2
+		st.markdown('## Model 2')
+		st.info('Model 2 info here')
+
+		# Model 3
+		st.markdown('## Model 3')
+		st.info(" Model 3 info here")
 
 # Required to let Streamlit instantiate our web app.  
 if __name__ == '__main__':
