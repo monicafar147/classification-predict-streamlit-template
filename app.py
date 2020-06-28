@@ -74,7 +74,7 @@ def main():
 
 		# Intro
 		st.markdown('## Introduction')
-		st.info('Intro Here')
+		st.info('Tendani Intro Here')
 
 		# Research
 		st.markdown('## Research')
