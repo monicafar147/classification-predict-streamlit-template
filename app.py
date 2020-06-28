@@ -218,7 +218,7 @@ def main():
 		st.subheader("Data used in our models")
 		st.text("The data we used in our models was unbalanced")
 		st.text("This posed a challenge to find a accurate model")
-		i = Image.open("resources/imgs/image.PNG")
+		i = Image.open("resources/imgs/i.PNG")
 		st.image(i, caption="Distribution of data", use_column_width=True)
 		st.text("     ")
 		st.subheader("Logistic Regression Model")
