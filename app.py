@@ -100,12 +100,7 @@ def main():
 	# Building out the predication page
 	if selection == "Home":
 		st.markdown("**This app will take input as text and return a classification into one of the four categories:**")
-		st.write("\n(see the About page for more information)")
-		st.info("""\n-1: Anti Climate Change
-				\n0: Neutral towards Climate Change
-				\n1: Pro Climate Change
-				\n2: Factual News about Climate Change
-				""")
+		st.write("(see the About page for more information)")
 
 		# Creating a text box for user input
 		st.markdown("### Enter Text Bellow")
@@ -133,6 +128,13 @@ def main():
 	if selection == "Modelling":
 		# title
 		st.title('Modelling process')
+		st.write("""for the modeling process the outputs that we were 
+				trying to predict were based on the following keys for a sentiment column:""")
+		st.info("""\n-1: Anti Climate Change
+				\n0: Neutral towards Climate Change
+				\n1: Pro Climate Change
+				\n2: Factual News about Climate Change
+				""")
 
 		# preprocessing
 		st.markdown("## Preprocessing the Data")
