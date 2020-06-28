@@ -216,7 +216,7 @@ def main():
 	if selection == "Modelling":
 		from PIL import Image
 		st.subheader("Data used in our models")
-		st.text("The data we used in our models was unbalanced")
+		st.text("The data we used in our models was unbalanced.")
 		st.text("This posed a challenge to find a accurate model")
 		st.text("0 - Neutral ")
 		st.text("1 - Pro")
@@ -251,6 +251,13 @@ def main():
 		st.text("     						")
 		st.image(image3, caption="Grid search")
 		st.subheader("Insights on how models perform on unseen data")
+		st.text("Having unbalanced data made it difficult to find the most accurate model.")
+		st.text("Even using methods like upsampling and downsampling did not improve models.")
+		st.text("We ended up having overfit models which perform very poorly on unseen data.")
+		st.text("Logistic model performs well on binary labels which is why it did not,")
+		st.text("perform very well in our data which has 4 labels. There was not much of a")
+		st.text("difference on unseen data. It did however perform better than other models")
+		st.text("like naive Bayes.")
 
 		
 		
