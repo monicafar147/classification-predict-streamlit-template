@@ -214,6 +214,12 @@ def main():
 			st.write("show raw data") # will write the df to the page
 
 	if selection == "Modelling":
+		st.subheader("Data used in our models")
+		st.text("The data we used in our models was unbalanced")
+		st.text("This posed a challenge to find a accurate model")
+		i = Image.open("resources/imgs/image.PNG")
+		st.image(i, caption="Distribution of data")
+		st.text("     ")
 		st.subheader("Logistic Regression Model")
 		st.text("Logistic regression is a supervised learning classification algorithm") 
 		st.text("used to predict the probability of a target variable.") 
@@ -236,6 +242,7 @@ def main():
 		st.text("Grid-search is the process of scanning the data to configure")
 		st.text("optimal parameters for a model.")
 		st.text("In our model, we searched for the best parameters to get the highest score.")
+		st.text("It was the model which gave the best score with an accuracy of approx 0.75")
 		st.text("     						")
 		st.image(image3, caption="Grid search")
 		st.subheader("Insights on how models perform on unseen data")
