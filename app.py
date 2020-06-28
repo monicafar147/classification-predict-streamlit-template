@@ -32,11 +32,11 @@ import streamlit as st
 import joblib,os
 from PIL import Image
 
-    Description: This file is used to launch a minimal streamlit web
+   """ Description: This file is used to launch a minimal streamlit web
 	application. You are expected to extend the functionality of this script
 	as part of your predict project.
 	For further help with the Streamlit framework, see:
-	https://docs.streamlit.io/en/latest/
+	https://docs.streamlit.io/en/latest/"""
 
 
 # Streamlit dependencies
