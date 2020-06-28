@@ -82,15 +82,18 @@ def main():
 
 		# EDA
 		st.markdown('## Exploratory Data Analysis')
-		st.info('EDA Here')
 
+			# Adding word clouds
+		st.info("These are the Word Clouds we created on the training set, the bigger the word the more common it occurs within the data")
+		from PIL import Image
+		pro = Image.open('resources/imgs/wordcloud_anti.PNG')
+		st.image(pro)
 		# Insights
 		st.markdown('## Insights')
 		st.info('Insights Here')
 		
 		# You can read a markdown file from supporting resources folder
 		st.markdown("Some information here")
-	    # add EDA
 	    # add real world research
 
 		st.subheader("Raw Twitter data and label")
