@@ -153,6 +153,7 @@ def main():
 
 	if selection == "Text Cleaning":
 		st.write("text cleaning section")
+		# KHANYISA
 
 	if selection == "Modelling":
 		st.subheader("Logistic Regression Model")
