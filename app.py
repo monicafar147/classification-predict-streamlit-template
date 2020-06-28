@@ -103,8 +103,11 @@ def main():
 		st.subheader("Models")
 
 		from PIL import Image
-		image = Image.open('resources/imgs/logistic.PNG')
-		st.image(image)
+		image1 = Image.open('resources/imgs/logistic.PNG')
+		image2 = Image.open('resources/imgs/linear svc.PNG')
+		st.image(image1, caption="Logistic Regression")
+		st.image(image2, caption="Linear SVC")
+		
 
 # Required to let Streamlit instantiate our web app.  
 if __name__ == '__main__':
