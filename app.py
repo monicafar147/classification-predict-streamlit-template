@@ -143,8 +143,7 @@ def main():
 				Chinese-funded conspiracy. As a result, some twitter users
 				started tweeting that Climate Change is not real and trying to
 				follow tweets about climate change suddenly required a degree in politics.""")
-		st.subheader("""The Climate Change Tweet Classifier aims to classify the sentiment of a tweet.
-					\n To view the word clouds for each sentiment in the data, choose an option below:""")
+
 		# EDA
 		st.markdown('## Exploratory Data Analysis')
 		st.subheader('Most tweeted hashtag')
@@ -164,22 +163,22 @@ def main():
 		st.markdown('### Word Clouds')
 		st.info("Words Clouds can give an indication of the frequency of words in the data.")
 
-		if st.button("Word Cloud for Anti TWeets"):
+		if st.button("Word Cloud for Anti Tweets"):
 			from PIL import Image
 			anti = Image.open('resources/imgs/wordcloud_anti.PNG')
 			st.image(anti, width = 650)
 
-		if st.button("Word Cloud for Pro TWeets"):
+		if st.button("Word Cloud for Pro Tweets"):
 			from PIL import Image
 			pro = Image.open('resources/imgs/wordcloud_pro.PNG')
 			st.image(pro, width = 650)
 
-		if st.button("Word Cloud for Neutral TWeets"):
+		if st.button("Word Cloud for Neutral Tweets"):
 			from PIL import Image
 			pro = Image.open('resources/imgs/wordcloud_neutral.PNG')
 			st.image(pro, width = 650)
 
-		if st.button("Word Cloud for News TWeets"):
+		if st.button("Word Cloud for News Tweets"):
 			from PIL import Image
 			pro = Image.open('resources/imgs/wordcloud_fact.PNG')
 			st.image(pro, width = 650)
