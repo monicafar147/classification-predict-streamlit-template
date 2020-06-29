@@ -237,9 +237,14 @@ def main():
 				\n Using the TwitterTokenizer module helps to keep contractions in their own form.""")
 		st.subheader("Try the tweet cleaner below:")
 		st.markdown("### Enter Text Bellow")
+		# pickle preprocessing function
+		process_path = "resources/process.pkl"
+		with open(process_path,'rb') as file:
+			process = pickle.load(file)
 		tweet_text = st.text_area("","Type Here")
 		tweet_processed = process(tweet_text)
-		st.success("Tweet cleaned as: {}".format('tweet_processed'))
+		if st.button("Clean Tweet"):
+			st.success("Tweet cleaned as: {}".format(tweet_processed))
 
 
 
