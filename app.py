@@ -109,7 +109,7 @@ def main():
 		st.markdown('## Exploratory Data Analysis')
 		if st.button("Click here to veiw EDA"):
 			st.subheader('Exploratoring the following data')
-			
+			#displays images in the api
 			from PIL import Image
 			image = Image.open('resources/imgs/i.PNG')
 
@@ -128,24 +128,29 @@ def main():
 				\n pro : @realDonaldTrump (31)
 				\n news : @thehill (77)
 				""")
+			
+			#displays images in the api
 			from PIL import Image
 			image = Image.open('resources/imgs/a.PNG')
 
 			st.image(image, caption=' Common Tweets',
 				use_column_width=True)
 
+            #displays images in the api
 			from PIL import Image
 			image = Image.open('resources/imgs/b.PNG')
 
 			st.image(image, caption=' Common Tweets',
 				use_column_width=True)
 
+            #displays images in the api
 			from PIL import Image
 			image = Image.open('resources/imgs/c.PNG')
 
 			st.image(image, caption=' ',
 				use_column_width=True)
 
+            #displays images in the api
 			from PIL import Image
 			image = Image.open('resources/imgs/d.PNG')
 
