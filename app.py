@@ -68,7 +68,7 @@ def main():
 	# Building out the "Information" page
 	if selection == "About":
 		# Title
-		st.title('About')
+		st.title('About Climat Change')
 		st.write('-----------------------------------------------')
 		# st.info("General Information")
 
@@ -78,7 +78,7 @@ def main():
 		if st.button("Click here to veiw Introduction"):
 			st.info("""Climate change has been a trending topic ever since
 				 Al Gore received a Nobel Peace Prize for his campaign in 2007.
-				The topic has become a controversial subject on twitter where some 
+				\n The topic has become a controversial subject on twitter where some 
 				twitter users feel very strongly that climate change is not real 
 				and is part of a conspiracy theory. To add fire to the situation, 
 				American President, Donald Trump, claimed that climate change is a 
@@ -89,7 +89,13 @@ def main():
 		# Problem Statement
 		st.markdown('## Problem Statement')
 		if st.button("Click here to veiw Problem Statement"):
-			st.info('Problem Statement Here')
+			st.info("""Many companies are built around lessening one’s environmental 
+					impact or carbon footprint. They offer products and services that 
+					are environmentally friendly and sustainable, in line with their 
+					values and ideals. They would like to determine how people perceive 
+					climate change and whether or not they believe it is a real threat. 
+					This would add to their market research efforts in gauging 
+					how their product/service may be received""")
 
 		st.subheader("The Climate Change Tweet Classifier aims to classify the sentiment of a tweet.")
 
@@ -134,11 +140,25 @@ def main():
 			st.image(image, caption=' Common Tweets',
 				use_column_width=True)
 
+			from PIL import Image
+			image = Image.open('resources/imgs/c.PNG')
+
+			st.image(image, caption=' ',
+				use_column_width=True)
+
+			from PIL import Image
+			image = Image.open('resources/imgs/d.PNG')
+
+			st.image(image, caption=' ',
+				use_column_width=True)
+
 			st.subheader('Infomation from data source')
 			st.info("""\n Number of Original Tweets: 6133
 				\n Number of Retweets: 9687)
 				\n Ratio of Orignal Tweets to retweets: 0.63
 				""")
+
+			st.subheader('Exploring data Conclusion')
 			st.info('We can see by this that there are alot more retweets in the data')
 				
 
