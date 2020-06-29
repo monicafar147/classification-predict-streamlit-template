@@ -73,8 +73,10 @@ def main():
 		# st.info("General Information")
 
 		# Intro
+		
 		st.markdown('## Introduction')
-		st.info("""Climate change has been a trending topic ever since
+		if st.button("Click here to veiw Introduction"):
+			st.info("""Climate change has been a trending topic ever since
 				 Al Gore received a Nobel Peace Prize for his campaign in 2007.
 				The topic has become a controversial subject on twitter where some 
 				twitter users feel very strongly that climate change is not real 
@@ -86,74 +88,49 @@ def main():
 
 		# Problem Statement
 		st.markdown('## Problem Statement')
-		st.info('Problem Statement Here')
+		if st.button("Click here to veiw Problem Statement"):
+			st.info('Problem Statement Here')
 
 		st.subheader("The Climate Change Tweet Classifier aims to classify the sentiment of a tweet.")
 
 		# Research
 		st.markdown('## Research')
-		st.info('Research Here')
+		if st.button("Click here to veiw Research"):
+			st.info('Research Here')
 
 		
 		# EDA
 		st.markdown('## Exploratory Data Analysis')
-		st.subheader('Most tweeted hashtag')
-		st.info("""\n anti : #MAGA (11) 
+		if st.button("Click here to veiw EDA"):
+			st.subheader('Most tweeted hashtag')
+			st.info("""\n anti : #MAGA (11) 
 				\n neutral : #climate (16)
 				\n pro : #climate : (130)
 				\n news : #climate : (130)
 				""")
-		st.subheader('Most tweeted username')
-		st.info("""\n anti : @realDonaldTrump (71)
+			st.subheader('Most tweeted username')
+			st.info("""\n anti : @realDonaldTrump (71)
 				\n neutral : @StephenSchlegel (307)
 				\n pro : @realDonaldTrump (31)
 				\n news : @thehill (77)
 				""")
 
-		# Adding word clouds
-		st.markdown('### Word Clouds')
-		st.info("These are the Word Clouds we created on the training set, the bigger the word the more common it occurs within the data")
-		from PIL import Image
-		anti = Image.open('resources/imgs/wordcloud_anti.PNG')
-		st.image(anti, width = 650)
+			from PIL import Image
+			image = Image.open('resources/imgs/i.PNG')
 
-		pro = Image.open('resources/imgs/wordcloud_pro.PNG')
-		st.image(pro, width = 650)
+			st.image(image, caption=' Total classification of the four categories',
+				use_column_width=True)
 
-		neutral = Image.open('resources/imgs/wordcloud_neutral.PNG')
-		st.image(neutral, width = 650)
+			image = Image.open('resources/imgs/a.JPG')
 
-		facts = Image.open('resources/imgs/wordcloud_fact.PNG')
-		st.image(facts, width = 650)
+			st.image(image, caption=' Common Tweets',
+				use_column_width=True)
 
-		st.markdown('** Interesting insights into the word clouds **')
-		st.markdown("""For Anti-climate change tweets:\n
-	* The word science pops up often
-	* Steves Goddard is referenced often
-	* Politicians referenced include Al Gore, Obama and Donald Trump""")
-		st.markdown("""For Pro-climate change tweets:\n
-	* Steven Schlegel is referenced often.
-	* The word Sjofona pops up often.
-	* The word husband pops up for some reason.
-	* Politicians referenced include Sen Sanders and Donald Trump""")
-		st.markdown("""For Neutral tweets:\n
-	* the word journalist pops up.
-	* Places referrenced are America and Paris.
-	* Chelsea Clinton is referrenced.
-	* Politicians referenced include Sen Sanders and Donald Trump
-	* Celebrities referenced incluse Leonardo Dicaprio
-	* Strong emotional words include please, action, fuck and responsible""")
-		st.markdown("""For Factual tweets:\n
-	* The word EPA pops up.
-	* News outlets referenced include CNN, Guardian, Time.
-	* Scott Prutt is mentioned
-	* The word independent study pops up.
-	* Che white house and Trump is mentioned.
-	* Countries that pop up include US and China""")
 
 		# Insights
 		st.markdown('## Insights')
-		st.info('Insights Here')
+		if st.button("Click here to veiw Insights"):
+			st.info('Insights Here')
 		
 		# You can read a markdown file from supporting resources folder
 		st.markdown("Some information here")
