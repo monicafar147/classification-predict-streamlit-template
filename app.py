@@ -115,13 +115,13 @@ def main():
 			print("predicted",result[int(tweet_pred)])
 			st.success("Tweet classified as: {}".format(result[int(tweet_pred)]))
 
-		if st.button("Classify LR model"):
-			tweet_pred = lr.predict([tweet_processed])
+		if st.button("Classify SVC (gridsearch) model"):
+			tweet_pred = grid.predict([tweet_processed])
 			print("predicted",result[int(tweet_pred)])
 			st.success("Tweet classified as: {}".format(result[int(tweet_pred)]))
 
-		if st.button("Classify grid model"):
-			tweet_pred = grid.predict([tweet_processed])
+		if st.button("Classify LR model"):
+			tweet_pred = lr.predict([tweet_processed])
 			print("predicted",result[int(tweet_pred)])
 			st.success("Tweet classified as: {}".format(result[int(tweet_pred)]))
 
@@ -143,12 +143,8 @@ def main():
 				Chinese-funded conspiracy. As a result, some twitter users
 				started tweeting that Climate Change is not real and trying to
 				follow tweets about climate change suddenly required a degree in politics.""")
-		st.subheader("The Climate Change Tweet Classifier aims to classify the sentiment of a tweet.")
-
-		# Research
-		st.markdown('## Research')
-		st.info('Research Here')
-
+		st.subheader("""The Climate Change Tweet Classifier aims to classify the sentiment of a tweet.
+					\n To view the word clouds for each sentiment in the data, choose an option below:""")
 		# EDA
 		st.markdown('## Exploratory Data Analysis')
 		st.subheader('Most tweeted hashtag')
@@ -166,19 +162,27 @@ def main():
 
 		# Adding word clouds
 		st.markdown('### Word Clouds')
-		st.info("These are the Word Clouds we created on the training set, the bigger the word the more common it occurs within the data")
-		from PIL import Image
-		anti = Image.open('resources/imgs/wordcloud_anti.PNG')
-		st.image(anti, width = 650)
+		st.info("Words Clouds can give an indication of the frequency of words in the data.")
 
-		pro = Image.open('resources/imgs/wordcloud_pro.PNG')
-		st.image(pro, width = 650)
+		if st.button("Word Cloud for Anti TWeets"):
+			from PIL import Image
+			anti = Image.open('resources/imgs/wordcloud_anti.PNG')
+			st.image(anti, width = 650)
 
-		neutral = Image.open('resources/imgs/wordcloud_neutral.PNG')
-		st.image(neutral, width = 650)
+		if st.button("Word Cloud for Pro TWeets"):
+			from PIL import Image
+			pro = Image.open('resources/imgs/wordcloud_pro.PNG')
+			st.image(pro, width = 650)
 
-		facts = Image.open('resources/imgs/wordcloud_fact.PNG')
-		st.image(facts, width = 650)
+		if st.button("Word Cloud for Neutral TWeets"):
+			from PIL import Image
+			pro = Image.open('resources/imgs/wordcloud_neutral.PNG')
+			st.image(pro, width = 650)
+
+		if st.button("Word Cloud for News TWeets"):
+			from PIL import Image
+			pro = Image.open('resources/imgs/wordcloud_fact.PNG')
+			st.image(pro, width = 650)
 
 		st.markdown('** Interesting insights into the word clouds **')
 		st.markdown("""For Anti-climate change tweets:\n
@@ -205,20 +209,23 @@ def main():
 	* Che white house and Trump is mentioned.
 	* Countries that pop up include US and China""")
 
-		# Insights
-		st.markdown('## Insights')
-		st.info('Insights Here')
-		
-		# You can read a markdown file from supporting resources folder
-		st.markdown("Some information here")
-	    # add EDA
-	    # add real world research
-
 		st.subheader("Raw Twitter data and label")
-		if st.checkbox('Show raw data'): # data is hidden if box is unchecked
-			st.write("show raw data") # will write the df to the page
+		if st.checkbox('Show raw data'):
+			# Load your raw data
+			raw = pd.read_csv("climate-change-belief-analysis/train.csv")
+			st.write(raw[['sentiment', 'message']])
 
 	if selection == "Data Cleaning":
+		st.subheader("Try the tweet cleaner below:")
+		st.markdown("### Enter Text Bellow")
+		# pickle preprocessing function
+		process_path = "resources/process.pkl"
+		with open(process_path,'rb') as file:
+			process = pickle.load(file)
+		tweet_text = st.text_area("","Type Here")
+		tweet_processed = process(tweet_text)
+		if st.button("Clean Tweet"):
+			st.success("Tweet cleaned as: {}".format(tweet_processed))
 		st.subheader("Before preprocessing we need to ask ourseleves the following questions about this data:")
 		st.write("Does URL have impact on the tweet sentiment?")
 		st.info("""So many twitter users retweet URL's to substantiate their view, therefore by removing 
@@ -235,64 +242,52 @@ def main():
 				Contractions does make the modelling process more challenging as [don't] needs to mean the same
 				as [do not]. 
 				\n Using the TwitterTokenizer module helps to keep contractions in their own form.""")
-		st.subheader("Try the tweet cleaner below:")
-		st.markdown("### Enter Text Bellow")
-		# pickle preprocessing function
-		process_path = "resources/process.pkl"
-		with open(process_path,'rb') as file:
-			process = pickle.load(file)
-		tweet_text = st.text_area("","Type Here")
-		tweet_processed = process(tweet_text)
-		if st.button("Clean Tweet"):
-			st.success("Tweet cleaned as: {}".format(tweet_processed))
-
-
 
 	if selection == "Modelling":
 		from PIL import Image
 		st.subheader("Data used in our models")
-		st.text("The data we used in our models was unbalanced.")
-		st.text("This posed a challenge to find a accurate model")
-		st.text("0 - Neutral ")
-		st.text("1 - Pro")
-		st.text("-1 - Anti")
-		st.text("2 - News")
+		st.write("""The data we used in our models was unbalanced.
+					\n This posed a challenge to find a accurate model.""")
+		st.info("""-1 : Anti
+				\n 0 : Neutral
+				\n 1 : Pro
+				\n 2 : News """)
 		i = Image.open("resources/imgs/i.PNG")
 		st.image(i, caption="Distribution of data", use_column_width=True)
 		st.text("     ")
-		st.subheader("Logistic Regression Model")
-		st.text("Logistic regression is a supervised learning classification algorithm") 
-		st.text("used to predict the probability of a target variable.") 
-		st.text("This model works best on binary data classification but almost performs well in our data") 
-		st.text("even though it badly predicts some classes such as the recall of 0 and -1.")
-		st.text("The overall accuracy is decent and it also does quite well on unseen data.")
+		st.write("Logistic Regression Model")
+		st.info("""Logistic regression is a supervised learning classification algorithm 
+				used to predict the probability of a target variable.
+				This model works best on binary data classification but almost performs well in our data
+				even though it badly predicts some classes such as the recall of 0 and -1. 
+				\n The overall accuracy is decent and it also does quite well on unseen data.""")
 		from PIL import Image
 		image1 = Image.open('resources/imgs/logistic.PNG')
 		st.image(image1, caption="Logistic Regression")
 		st.text("                                                                        ")
-		st.subheader("Linear SVC Model")
-		st.text("Linear Support Vector Machine is machine learning algorithm for")
-		st.text("solving multiclass classification problems.")
-		st.text("It gives a better score than Logistics regression")
+		st.write("Linear SVC Model")
+		st.info("""Linear Support Vector Machine is machine learning algorithm for solving 
+				multiclass classification problems. 
+				\n It gives a better score than Logistics regression""")
 		st.text("                                             ")
+		from PIL import Image
 		image2 = Image.open('resources/imgs/linear svc.PNG')
 		st.image(image2, caption="Linear SVC")
-		st.subheader("Grid search on SVC")
+		st.write("Grid search on SVC")
 		image3 = Image.open("resources/imgs/grid.PNG")
-		st.text("Grid-search is the process of scanning the data to configure")
-		st.text("optimal parameters for a model.")
-		st.text("In our model, we searched for the best parameters to get the highest score.")
-		st.text("It was the model which gave the best score with an accuracy of approx 0.75")
+		st.info("""Grid-search is the process of scanning the models to configure optimal parameters
+				 for a model. In our Support Vector Machine model, we searched for the best parameters
+				bewteen C and gamma parameters to get the past fit. It was the model which gave the best
+				\n Grid search is computationally expensive but gave an accuracy 0.75""")
 		st.text("     						")
+		from PIL import Image
 		st.image(image3, caption="Grid search")
 		st.subheader("Insights on how models perform on unseen data")
-		st.text("Having unbalanced data made it difficult to find the most accurate model.")
-		st.text("Even using methods like upsampling and downsampling did not improve models.")
-		st.text("We ended up having overfit models which perform very poorly on unseen data.")
-		st.text("Logistic model performs well on binary labels which is why it did not,")
-		st.text("perform very well in our data which has 4 labels. There was not much of a")
-		st.text("difference on unseen data. It did however perform better than other models")
-		st.text("like naive Bayes.")
+		st.info("""Having unbalanced data made it difficult to find the most accurate model. 
+		Even using methods like upsampling and downsampling did not improve models. We ended 
+		up having overfit models which perform very poorly on unseen data. 
+		Logistic model performs well on binary labels which is why it did not, perform very well
+		in our data which has 4 labels. \n The best performing model was the Linear SVC model.""")
 
 
 		
