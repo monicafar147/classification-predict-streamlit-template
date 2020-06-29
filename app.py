@@ -102,6 +102,14 @@ def main():
 		# EDA
 		st.markdown('## Exploratory Data Analysis')
 		if st.button("Click here to veiw EDA"):
+			st.subheader('Exploratoring the following data')
+			
+			from PIL import Image
+			image = Image.open('resources/imgs/i.PNG')
+
+			st.image(image, caption=' Total classification of the four categories',
+				use_column_width=True)
+
 			st.subheader('Most tweeted hashtag')
 			st.info("""\n anti : #MAGA (11) 
 				\n neutral : #climate (16)
@@ -114,18 +122,25 @@ def main():
 				\n pro : @realDonaldTrump (31)
 				\n news : @thehill (77)
 				""")
-
 			from PIL import Image
-			image = Image.open('resources/imgs/i.PNG')
-
-			st.image(image, caption=' Total classification of the four categories',
-				use_column_width=True)
-
 			image = Image.open('resources/imgs/a.PNG')
 
 			st.image(image, caption=' Common Tweets',
 				use_column_width=True)
 
+			from PIL import Image
+			image = Image.open('resources/imgs/b.PNG')
+
+			st.image(image, caption=' Common Tweets',
+				use_column_width=True)
+
+			st.subheader('Infomation from data source')
+			st.info("""\n Number of Original Tweets: 6133
+				\n Number of Retweets: 9687)
+				\n Ratio of Orignal Tweets to retweets: 0.63
+				""")
+			st.info('We can see by this that there are alot more retweets in the data')
+				
 
 		# Insights
 		st.markdown('## Insights')
