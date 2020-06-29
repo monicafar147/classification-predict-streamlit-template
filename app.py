@@ -67,8 +67,12 @@ def main():
 
 	# Creates a main title and subheader on your page -
 	# these are static across all pages
+	st.write('-----------------------------------------------')
 	st.title("Tweet Classifer")
 	st.subheader("Classifing tweets towards their belief in Climate Change")
+	from PIL import Image
+	logo = Image.open('resources/imgs/twitter_logo.jpg')
+	st.image(logo, width = 100)
 
 	# Creating sidebar with selection box -
 	# you can create multiple pages this way
@@ -101,12 +105,11 @@ def main():
 				0: 'Neutral towards Climate Change',
 				1: 'Pro Climate Change',
 				2: 'News'}
-
-		st.markdown("**This app will take input as text and return a classification into one of the four categories:**")
-		st.write("(see the About page for more information)")
+		st.write('-----------------------------------------------')
+		st.info("See the **About** page for more information and data analysis")
 
 		# Creating a text box for user input
-		st.markdown("### Enter Text Bellow")
+		st.markdown("## **Enter Tweet Below**")
 		tweet_text = st.text_area("","Type Here")
 		tweet_processed = process(tweet_text)
 
@@ -183,30 +186,37 @@ def main():
 			pro = Image.open('resources/imgs/wordcloud_fact.PNG')
 			st.image(pro, width = 650)
 
-		st.subheader('Interesting insights into the word clouds ')
-		st.markdown("""For Anti-climate change tweets:\n
-	* The word science pops up often
-	* Steves Goddard is referenced often
-	* Politicians referenced include Al Gore, Obama and Donald Trump""")
-		st.markdown("""For Pro-climate change tweets:\n
-	* Steven Schlegel is referenced often.
-	* The word Sjofona pops up often.
-	* The word husband pops up for some reason.
-	* Politicians referenced include Sen Sanders and Donald Trump""")
-		st.markdown("""For Neutral tweets:\n
-	* the word journalist pops up.
-	* Places referrenced are America and Paris.
-	* Chelsea Clinton is referrenced.
-	* Politicians referenced include Sen Sanders and Donald Trump
-	* Celebrities referenced incluse Leonardo Dicaprio
-	* Strong emotional words include please, action, fuck and responsible""")
-		st.markdown("""For Factual tweets:\n
-	* The word EPA pops up.
-	* News outlets referenced include CNN, Guardian, Time.
-	* Scott Prutt is mentioned
-	* The word independent study pops up.
-	* Che white house and Trump is mentioned.
-	* Countries that pop up include US and China""")
+		st.subheader('Interesting insights about the training data: ')
+		st.markdown("""For Anti-climate change tweets:""")
+		st.info("""\n - The word **science** occurs alot as many people against climate change
+				use scientific facts to express their view.
+				\n - **Steves Goddard** pops up and he is a social media influencer of
+				 scientific background but denies science about climate change. 
+				He would often produce a graphic that shows that climate change is not real.
+				\n - Politicians referenced include **Al Gore**, **Obama** and **Donald Trump**.
+				\n - The **#MAGA** is a hasthtag that means Make America Great Again and
+				 is associated with Americans who side with Trump.""")
+		st.markdown("""For Pro-climate change tweets:""")
+		st.info("""\n - **Steven Schlegel** occurs often as there is a science report
+				from 2006 detailing the predictions of climate change in the future published by Schlegel.
+				\n - The hashtag **#ImVotingBecause** occured 62 times which might imply that climate change
+				can influence voters decision who to vote for.
+				\n - The word husband pops up for some reason.
+				\n - Politicians referenced include **Sen Sanders** and **Donald Trump**""")
+		st.markdown("""For Neutral tweets:""")
+		st.info("""\n - The word **journalist** pops up.
+	\n - Places referrenced are **America** and **Paris**. The paris word might reference to *The Paris Agreement* 
+	\n - **Chelsea Clinton** is referrenced, she is an American author and global health advocate.
+	\n - Politicians referenced include **Sen Sanders** and **Donald Trump**
+	\n - Celebrities referenced include **Leonardo Dicaprio**.
+	\n - Strong emotional words include please, action, fuck and responsible""")
+		st.markdown("""For News tweets:""")
+		st.info("""\n - The word **EPA** pops up, this is the United States Environmental Protection Agency.
+	\n - News outlets referenced include **CNN**, **Guardian**, **Time**.
+	\n - **Scott Prutt** is mentioned, he is the Administrator of the United States Environmental Protection Agency.
+	\n - The word **independent study** pops up.
+	\n - Che **white house** and **Trump** is mentioned.
+	\n - Countries that pop up include **US** and **China**.""")
 
 		st.subheader("Raw Twitter data and label")
 		if st.checkbox('Show raw data'):
@@ -215,9 +225,10 @@ def main():
 			st.write(raw[['sentiment', 'message']])
 
 	if selection == "Data Cleaning":
+		st.write('-----------------------------------------------')
 		st.write("""Cleaning tweets is vitally important for an accurate model. 
 				\n Try our tweet cleaner below that will show you how we cleaned our tweets.""")
-		st.markdown("### Enter Tweet Bellow")
+		st.markdown("## **Enter Tweet Below**")
 		# pickle preprocessing function
 		process_path = "resources/process.pkl"
 		with open(process_path,'rb') as file:
@@ -232,7 +243,7 @@ def main():
 				the URL the sentiment value might be reduced.""")
 		st.write("Does retweet have any impact on tweet sentiment?")
 		st.info("""\n Number of Original Tweets: 6133
-				\n Number of Retweets: 9687)
+				\n Number of Retweets: 9687
 				\n Ratio of Orignal Tweets to retweets: 0.63
 				\n Because the retweet ratio is more than 0.5, it would be better to keep the retweet as RT.""")
 		st.write("Does removing hashtags remove sentiment?")
@@ -242,8 +253,13 @@ def main():
 				Contractions does make the modelling process more challenging as [don't] needs to mean the same
 				as [do not]. 
 				\n Using the TwitterTokenizer module helps to keep contractions in their own form.""")
+		st.write("What about emojis?")
+		st.info("""Twitter users love using emojis as a way of expressing their emotions. The training data did not
+				have a large sample of emojis so keeping the emojis in their raw form would improve the sentiment
+				of our models.""")
 
 	if selection == "Modelling":
+		st.write('-----------------------------------------------')
 		from PIL import Image
 		st.subheader("Data used in our models")
 		st.write("""The data we used in our models was unbalanced.
@@ -275,9 +291,10 @@ def main():
 		st.image(image2, caption="Linear SVC")
 		st.write("Grid search on SVC")
 		image3 = Image.open("resources/imgs/grid.PNG")
-		st.info("""Grid-search is the process of scanning the models to configure optimal parameters
+		st.info("""Grid search is the process of scanning the models to configure optimal parameters
 				 for a model. In our Support Vector Machine model, we searched for the best parameters
-				bewteen C and gamma parameters to get the past fit. It was the model which gave the best
+				bewteen C and gamma parameters to get the past fit. Our grid search gave these parameters
+				as the best parameters: Using C=1 and gamma=0.01.
 				\n Grid search is computationally expensive but gave an accuracy 0.75""")
 		st.text("     						")
 		from PIL import Image
