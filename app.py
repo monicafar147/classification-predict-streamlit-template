@@ -97,6 +97,11 @@ def main():
 		with open(model_load_path,'rb') as file:
 			grid = pickle.load(file)
 
+		result = {-1:'Anti Climate Change',
+				0: 'Neutral towards Climate Change',
+				1: 'Pro Climate Change',
+				2: 'News'}
+
 		st.markdown("**This app will take input as text and return a classification into one of the four categories:**")
 		st.write("(see the About page for more information)")
 
@@ -107,18 +112,18 @@ def main():
 
 		if st.button("Classify Linear SVC model"):
 			tweet_pred = svc.predict([tweet_processed])
-			print("predicted",tweet_pred)
-			st.success("Text Categorized as: {}".format(tweet_pred))
+			print("predicted",result[int(tweet_pred)])
+			st.success("Tweet classified as: {}".format(result[int(tweet_pred)]))
 
 		if st.button("Classify LR model"):
 			tweet_pred = lr.predict([tweet_processed])
-			print("predicted",tweet_pred)
-			st.success("Text Categorized as: {}".format(tweet_pred))
+			print("predicted",result[int(tweet_pred)])
+			st.success("Tweet classified as: {}".format(result[int(tweet_pred)]))
 
 		if st.button("Classify grid model"):
 			tweet_pred = grid.predict([tweet_processed])
-			print("predicted",tweet_pred)
-			st.success("Text Categorized as: {}".format(tweet_pred))
+			print("predicted",result[int(tweet_pred)])
+			st.success("Tweet classified as: {}".format(result[int(tweet_pred)]))
 
 	# Building out the "Information" page
 	if selection == "About":
