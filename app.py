@@ -183,7 +183,7 @@ def main():
 			pro = Image.open('resources/imgs/wordcloud_fact.PNG')
 			st.image(pro, width = 650)
 
-		st.markdown('** Interesting insights into the word clouds **')
+		st.subheader('Interesting insights into the word clouds ')
 		st.markdown("""For Anti-climate change tweets:\n
 	* The word science pops up often
 	* Steves Goddard is referenced often
@@ -215,8 +215,9 @@ def main():
 			st.write(raw[['sentiment', 'message']])
 
 	if selection == "Data Cleaning":
-		st.subheader("Try the tweet cleaner below:")
-		st.markdown("### Enter Text Bellow")
+		st.write("""Cleaning tweets is vitally important for an accurate model. 
+				\n Try our tweet cleaner below that will show you how we cleaned our tweets.""")
+		st.markdown("### Enter Tweet Bellow")
 		# pickle preprocessing function
 		process_path = "resources/process.pkl"
 		with open(process_path,'rb') as file:
