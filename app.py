@@ -90,13 +90,12 @@ def main():
 		# Problem Statement
 		st.markdown('## Problem Statement')
 		if st.button("Click here to veiw Problem Statement"):
-			st.info("""Many companies are built around lessening one’s environmental 
-					impact or carbon footprint. They offer products and services that 
-					are environmentally friendly and sustainable, in line with their 
-					values and ideals. They would like to determine how people perceive 
-					climate change and whether or not they believe it is a real threat. 
-					This would add to their market research efforts in gauging 
-					how their product/service may be received""")
+			st.info("""How people perceive climate change and whether or not they believe 
+			it is a real threat, there are many companies that are built around lessening 
+			one’s environmental impact or carbon footprint. They offer products and 
+			services that are environmentally friendly and sustainable.
+			\n This would add to their market research efforts in gauging how their 
+			product/service may be received""")
 
 		st.subheader("The Climate Change Tweet Classifier aims to classify the sentiment of a tweet.")
 
