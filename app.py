@@ -68,7 +68,7 @@ def main():
 	# Building out the "Information" page
 	if selection == "About":
 		# Title
-		st.title('About Climat Change')
+		st.title('About Climate Change')
 		st.write('-----------------------------------------------')
 		# st.info("General Information")
 
