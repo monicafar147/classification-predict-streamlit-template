@@ -287,10 +287,10 @@ def main():
 		Even using methods like upsampling and downsampling did not improve models. We ended 
 		up having overfit models which perform very poorly on unseen data. 
 		Logistic model performs well on binary labels which is why it did not perform very well
-		in our data which has 4 labels. \n The best performing model was the Linear SVC model. \n
+		in our data which has 4 labels. \n The best performing model was the Linear SVC model.
 		The model had a slightly better score than logistic regression model because it uses a one-vs-all
 		classification that create multiple binary classification models, optimizes the algorithm
-		for each class and then merges the models. \n Grid search ultimately gave the best score.
+		for each class and then merges the models. Grid search ultimately gave the best score.
 		It uses all possible combinations, outputs the results for each combination to give the best
 		accuracy.""")
 
