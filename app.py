@@ -82,7 +82,8 @@ def main():
 				twitter users feel very strongly that climate change is not real 
 				and is part of a conspiracy theory. To add fire to the situation, 
 				American President, Donald Trump, claimed that climate change is a 
-				Chinese-funded conspiracy. As a result, some twitter users
+				Chinese-funded conspiracy. 
+				\n As a result, some twitter users
 				started tweeting that Climate Change is not real and trying to
 				follow tweets about climate change suddenly required a degree in politics.""")
 
@@ -160,7 +161,12 @@ def main():
 
 			st.subheader('Exploring data Conclusion')
 			st.info('We can see by this that there are alot more retweets in the data')
-				
+			
+		# Adding word clouds		
+		st.markdown('### Word Clouds')
+		if st.button("Click here to veiw Word Clouds"):
+			st.subheader("""These are the Word Clouds we created on the training set, the bigger the word the more common it occurs within the data""")
+			st.info('Word Clouds Here')
 
 		# Insights
 		st.markdown('## Insights')
