@@ -121,7 +121,7 @@ def main():
 			st.image(image, caption=' Total classification of the four categories',
 				use_column_width=True)
 
-			image = Image.open('resources/imgs/a.JPG')
+			image = Image.open('resources/imgs/a.PNG')
 
 			st.image(image, caption=' Common Tweets',
 				use_column_width=True)
