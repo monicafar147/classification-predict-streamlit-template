@@ -72,7 +72,7 @@ def main():
 
 	# Creating sidebar with selection box -
 	# you can create multiple pages this way
-	options = ["Home", "About","Modelling"]
+	options = ["Home", "About","Data Cleaning","Modelling"]
 	selection = st.sidebar.selectbox("Choose Option", options)
 
 	# Building out the predication page
@@ -218,6 +218,31 @@ def main():
 		if st.checkbox('Show raw data'): # data is hidden if box is unchecked
 			st.write("show raw data") # will write the df to the page
 
+	if selection == "Data Cleaning":
+		st.subheader("Before preprocessing we need to ask ourseleves the following questions about this data:")
+		st.write("Does URL have impact on the tweet sentiment?")
+		st.info("""So many twitter users retweet URL's to substantiate their view, therefore by removing 
+				the URL the sentiment value might be reduced.""")
+		st.write("Does retweet have any impact on tweet sentiment?")
+		st.info("""\n Number of Original Tweets: 6133
+				\n Number of Retweets: 9687)
+				\n Ratio of Orignal Tweets to retweets: 0.63
+				\n Because the retweet ratio is more than 0.5, it would be better to keep the retweet as RT.""")
+		st.write("Does removing hashtags remove sentiment?")
+		st.info("""Hashtags can link one tweet to another, therefore it would be better to keep the hashtags.""")
+		st.write("Contractions are a problem. how will removing them effect our model?")
+		st.info("""Twitter users use slang to communicate their views and many tweets contain contractions. 
+				Contractions does make the modelling process more challenging as [don't] needs to mean the same
+				as [do not]. 
+				\n Using the TwitterTokenizer module helps to keep contractions in their own form.""")
+		st.subheader("Try the tweet cleaner below:")
+		st.markdown("### Enter Text Bellow")
+		tweet_text = st.text_area("","Type Here")
+		tweet_processed = process(tweet_text)
+		st.success("Tweet cleaned as: {}".format('tweet_processed'))
+
+
+
 	if selection == "Modelling":
 		from PIL import Image
 		st.subheader("Data used in our models")
@@ -264,7 +289,7 @@ def main():
 		st.text("difference on unseen data. It did however perform better than other models")
 		st.text("like naive Bayes.")
 
-		
+
 		
 
 # Required to let Streamlit instantiate our web app.  
