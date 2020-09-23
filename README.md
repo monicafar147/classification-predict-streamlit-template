@@ -5,10 +5,6 @@
 
 ![Streamlit](resources/imgs/streamlit.png)
 
-This repository forms the basis of *Task 2* for the **Classification Predict** within EDSA's Data Science course. It hosts template code which will enable students to deploy a basic [Streamlit](https://www.streamlit.io/) web application.
-
-As part of the predict, students are expected to expand on this base template; increasing the number of available models, user data exploration capabilities, and general Streamlit functionality.    
-
 #### 1.1) What is Streamlit?
 
 [![What is an API](resources/imgs/what-is-streamlit.png)](https://youtu.be/R2nr1uZ8ffc?list=PLgkF0qak9G49QlteBtxUIPapT8TzfPuB8)
@@ -161,5 +157,3 @@ Having run your web app within Tmux, you should be now free to end your ssh sess
 This section of the repo will be periodically updated to represent common questions which may arise around its use. If you detect any problems/bugs, please [create an issue](https://help.github.com/en/github/managing-your-work-on-github/creating-an-issue) and we will do our best to resolve it as quickly as possible.
 
 We wish you all the best in your learning experience :rocket:
-
-![Explore Data Science Academy](resources/imgs/EDSA_logo.png)
